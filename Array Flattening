@@ -1,0 +1,12 @@
+const arraynested = [1, [2, [3, [4, [5]]]]]; // Here we have created a variable arraynested which is stroing a deeply nested array
+
+const arrayflattened = arraynested.flat(Infinity); 
+
+// We have created a variable arrayflattened which will store the flattened array
+// explanation of arraynested.flat(Infinity); : 
+// here we have use flat() method which is part of JavaScript's built-in Array methods, to flatten a deeply nested array
+// What it does is that it creates a new array where all sub-array elements are flattened into a single layer along with the top level elements
+// The argument passed to flat() determines how deeply nested arrays should be flattened
+// here we have passed the argument as infinity to flatten a nested array of any depth
+
+console.log(arrayflattened); // Print the flattened array on the console
