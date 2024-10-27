@@ -1,12 +1,16 @@
-const arraynested = [1, [2, [3, [4, [5]]]]]; // Here we have created a variable named arraynested which is stroing a deeply nested array
+const arraynested = [1, [2, [3, [4, [5]]]]]; // Let's take this example of deeply nested array
 
-const arrayflattened = arraynested.flat(Infinity); 
+function arrayflatten(arr) { // Here we have defined a function which takes the parameter arr which is the nested array needed to be flatten
+    return arr.reduce((acc, val) => { // reduce method iterates over each element in the array accumulating a result into a single output value
+// accumulator stores the accumulated value and val stores the current value being processed
+        return Array.isArray(val) // This line checks if the current value val is an array using Array.isArray(). If val is an array, the condition evaluates to true; otherwise, it evaluates to false
+            ? acc.concat(arrayflatten(val)) // If val is an array, this part is executed
+// The function calls itself recursively: arrayflatten(val)
+// The result of this recursive call is then concatenated to the accumulator acc using concat(), which combines the two arrays
+            : acc.concat(val); // If val is not an array, this part is executed , It directly concatenates val to the accumulator acc
+    }, []); // This empty array [] is passed as the second argument to reduce(), which serves as the initial value of the accumulator acc
+}
 
-// We have created a variable arrayflattened which will store the flattened array
-// explanation of arraynested.flat(Infinity); : 
-// here we have use flat() method which is part of JavaScript's built-in Array methods, to flatten a deeply nested array
-// What it does is that it creates a new array where all sub-array elements are flattened into a single layer along with the top level elements
-// The argument passed to flat() determines how deeply nested arrays should be flattened
-// here we have passed the argument as infinity to flatten a nested array of any depth
-
-console.log(arrayflattened); // Print the flattened array on the console
+const flattenedArray = arrayflatten(arraynested); // This line calls the arrayflatten function with arraynested as the argument and stores the result in flattenedArray
+// After this operation, flattenedArray will contain all the elements of arraynested, flattened into a single-level array
+console.log(flattenedArray); // Here we Print the flattened array to the console
