@@ -1,4 +1,4 @@
-const arraynested = [1, [2, [3, [4, [5]]]]]; // Here we have created a variable arraynested which is stroing a deeply nested array
+const arraynested = [1, [2, [3, [4, [5]]]]]; // Here we have created a variable named arraynested which is stroing a deeply nested array
 
 const arrayflattened = arraynested.flat(Infinity); 
 
